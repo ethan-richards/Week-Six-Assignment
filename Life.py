@@ -22,21 +22,21 @@ def main():
         
         userIn = input("Press a key, Q stops the program: ")
     print("Goodbye!")
-    
+   #creates a random population at the beginning of the simulation 
 def randomPopulate(world,h,w):
     for x in range(h):
         row = []
         for y in range(w):
             row.append(random.randint(0,1))
         world.append(row)
-        
+#creates a population that is filed with dead cells that can be replaced with living or dead ones in the future        
 def populate(world,h,w):
     for x in range(h):
         row = []
         for y in range(w):
             row.append(0)
         world.append(row)  
-            
+#displays the living or dead cells in the output            
 def display(world,h,w):
     worldString = "" 
     for x in range(h):
@@ -51,7 +51,7 @@ def display(world,h,w):
     print(worldString)
         
     
-    
+ #decides whether a cell lives or dies and sends the new generation back to the world   
 def generation(world,h,w):
     newWorld = []
     populate(newWorld,h,w)
@@ -74,10 +74,10 @@ def generation(world,h,w):
                     newWorld[x][y] = 0
             
             else:
-                if n == 3 or n ==2 :
-                    newWorld[x][y] = 1
-                else:
+                if n <2 or n > 3 :
                     newWorld[x][y] = 0
+                else:
+                    newWorld[x][y] = 1
     return newWorld
     
     
